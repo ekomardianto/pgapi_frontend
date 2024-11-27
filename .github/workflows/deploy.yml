@@ -1,0 +1,54 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/pgapi_frontend:latest
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.SERVER }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: ${{ secrets.SERVER_PORT }}
+          script: |
+            echo "Stopping and removing previous container..."
+            docker stop ${{ vars.CONTAINER_NAME }} || true && docker rm ${{ vars.CONTAINER_NAME }} || true
+            echo "Pulling the latest image..."
+            docker pull ${{ vars.IMAGE_NAME }}:latest
+            echo "Running the container..."
+            docker run -d \
+              -p 3000:3000 \
+              --name ${{ vars.CONTAINER_NAME }} \
+              -e NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} \
+              -e BACKEND_API_BASEURL=${{ secrets.BACKEND_API_BASEURL }} \
+              -e NEXT_PUBLIC_BACKEND_API_BASEURL=${{ secrets.NEXT_PUBLIC_BACKEND_API_BASEURL }} \
+              -e NEXT_PUBLIC_URL_PARAM_ENCRYPT_KEY=${{ secrets.NEXT_PUBLIC_URL_PARAM_ENCRYPT_KEY }} \
+              -e NEXT_PUBLIC_URL_ENCRYPT_KEY=${{ secrets.NEXT_PUBLIC_URL_ENCRYPT_KEY }} \
+              -e FRONTEND_URL=${{ vars.FRONTEND_URL }} \
+              ${{ vars.IMAGE_NAME }}:latest
