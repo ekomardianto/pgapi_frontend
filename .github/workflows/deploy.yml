@@ -22,6 +22,7 @@ jobs:
           NEXT_PUBLIC_URL_PARAM_ENCRYPT_KEY: ${{ secrets.NEXT_PUBLIC_URL_PARAM_ENCRYPT_KEY }}
           NEXT_PUBLIC_URL_ENCRYPT_KEY: ${{ secrets.DB_NAME }}
           FRONTEND_URL: ${{ vars.FRONTEND_URL }}
+          NEXTAUTH_URL: ${{ vars.NEXTAUTH_URL }}
         run: |
           echo "Environment variables set!"
 
@@ -64,4 +65,5 @@ jobs:
               -e NEXT_PUBLIC_URL_PARAM_ENCRYPT_KEY=${{ secrets.NEXT_PUBLIC_URL_PARAM_ENCRYPT_KEY }} \
               -e NEXT_PUBLIC_URL_ENCRYPT_KEY=${{ secrets.NEXT_PUBLIC_URL_ENCRYPT_KEY }} \
               -e FRONTEND_URL=${{ vars.FRONTEND_URL }} \
+              -e NEXTAUTH_URL=${{ vars.NEXTAUTH_URL }} \
               ${{ vars.IMAGE_NAME }}:latest
