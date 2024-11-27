@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button.edit {
+  background-color: #df9407;
+  color: #fff;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button.edit:hover {
+  background-color: #df93078f;
+  transition: 0.3s;
+}
+button.delete {
+  background-color: #b90101;
+  color: #fff;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button.delete:hover {
+  background-color: #b9010142;
+  transition: 0.3s;
+}
+.title_confirm {
+  font-size: 10pt;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.button_confirm {
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.expiredbtn {
+  width: 200px;
+  height: 50px;
+  margin-top: 30px;
+}
+.box-loader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  gap: 10px;
+}
+.loader {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+.loader:after {
+  content: " ";
+  display: block;
+  width: 15px;
+  height: 15px;
+  /* margin: 2px; */
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  border-color: #ffffff transparent #efefef transparent;
+  animation: loader 1.2s linear infinite;
+}
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.mid-loader {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+}
+
+.mid-loader:after {
+  content: " ";
+  display: block;
+  width: 45px;
+  height: 45px;
+  /* margin: 2px; */
+  border-radius: 50%;
+  border: 5px solid #ffffff;
+  border-color: #ffffff transparent #efefef transparent;
+  animation: mid-loader 1.2s linear infinite;
+}
+@keyframes mid-loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

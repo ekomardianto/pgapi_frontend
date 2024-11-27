@@ -1,0 +1,162 @@
+.home {
+  color: rgb(248, 248, 248);
+  text-align: center;
+  width: 100%;
+  &__rowatas {
+    font: poppins;
+    margin-bottom: 40px;
+    font-size: 26pt;
+    font-weight: 800;
+    &__span {
+      font-size: 50pt;
+      color: #c90ba0;
+    }
+  }
+  &__rowplan {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    &__title {
+      clear: both;
+      margin-bottom: 40px;
+    }
+    &__box {
+      width: 380px;
+      min-height: 600px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid #dee2e6;
+      border-radius: 20px;
+      box-shadow: #2b2b2b 0px 5px 20px 3px;
+      align-items: center;
+      &__kode {
+        width: 100%;
+        text-align: left;
+        border-bottom: #dee2e6 1px solid;
+        padding-bottom: 10px;
+        font-weight: bold;
+        color: #dee2e6;
+      }
+      &__title {
+        margin-top: 20px;
+      }
+      &__deskripsi {
+        font-size: 11pt;
+      }
+      &__price {
+        font-size: 45pt;
+        font-weight: 800;
+        span {
+          font-size: 18pt;
+          font-weight: 400;
+        }
+      }
+      &__image {
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+  }
+  &__rowbawah {
+    color: #dee2e6;
+  }
+  h3 {
+    font-weight: 200;
+  }
+}
+
+@media only screen and (max-width: 1188px) {
+  /* For mobile phones: */
+  .home {
+    &__rowplan {
+      &__box {
+        width: 300px;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 950px) {
+  /* For mobile phones: */
+  .home {
+    &__rowplan {
+      &__box {
+        width: 280px;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 910px) {
+  /* For mobile phones: */
+  .home {
+    &__rowplan {
+      flex-direction: column;
+      &__box {
+        width: 380px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  /* For mobile phones: */
+  .home {
+    &__rowatas {
+      margin-left: -50px;
+      width: 300px;
+      font-size: 20pt;
+    }
+    &__rowplan {
+      flex-direction: column;
+      &__box {
+        width: 300px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  /* For mobile phones: */
+  .home {
+    &__rowatas {
+      margin-left: -80px;
+      font-size: 20pt;
+    }
+    &__rowplan {
+      flex-direction: column;
+      &__box {
+        width: 300px;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 390px) {
+  /* For mobile phones: */
+  .home {
+    &__rowatas {
+      margin-left: -80px;
+      font-size: 18pt;
+      width: 285px;
+      &__span {
+        font-size: 35pt;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 330px) {
+  /* For mobile phones: */
+  .home {
+    &__rowatas {
+      margin-left: -95px;
+      font-size: 18pt;
+      width: 285px;
+      &__span {
+        font-size: 35pt;
+      }
+    }
+  }
+}

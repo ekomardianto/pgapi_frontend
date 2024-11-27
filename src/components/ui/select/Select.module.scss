@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  border: none;
+  outline: none;
+  position: relative;
+  max-height: 100px;
+  &__selectWrapper {
+    position: relative;
+    display: inline-block;
+    max-height: 100px;
+    &__select {
+      padding: 10px;
+      background-color: #d1f3fc;
+      margin-top: 5px;
+      border: none;
+      outline: none;
+      max-height: 100px;
+      border-radius: 10px;
+      &:disabled {
+        opacity: 0.7;
+      }
+      &:focus {
+        outline: 1.5px solid rgb(41, 127, 239);
+      }
+      option {
+        color: #000;
+        font-size: 10pt;
+        background-color: aliceblue;
+        padding: 20px;
+      }
+    }
+  }
+  &__label {
+    margin-top: 15px;
+  }
+}

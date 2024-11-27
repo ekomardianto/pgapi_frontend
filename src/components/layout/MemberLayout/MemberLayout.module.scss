@@ -1,0 +1,20 @@
+.member {
+  background-color: #fff;
+  display: flex;
+  &__content {
+    width: 100%;
+    padding: 20px;
+    margin-top: 50px;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  /* For mobile phones: */
+  .member {
+    display: flex;
+    &__content {
+      width: 100%;
+      padding: 20px;
+    }
+  }
+}
