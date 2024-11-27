@@ -27,7 +27,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/pgapi_frontend:latest
+          tags: ${{ vars.CONTAINER_NAME }}/pgapi_frontend:latest
 
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v0.1.4
