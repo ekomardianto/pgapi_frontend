@@ -16,7 +16,7 @@ const header = {
 };
 
 const instance = axios.create({
-  baseURL: "http://localhost:1213",
+  baseURL: process.env.NEXT_PUBLIC_BACKEND_API_BASEURL,
   headers: header,
   timeout: 60000,
 });
