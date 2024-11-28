@@ -16,8 +16,9 @@ const header = {
 };
 
 const instance = axios.create({
-  baseURL:
-    process.env.NEXT_PUBLIC_BACKEND_API_BASEURL || "https://pgbe.epay.co.id",
+  baseURL: process.env.NEXT_PUBLIC_BACKEND_API_BASEURL
+    ? process.env.NEXT_PUBLIC_BACKEND_API_BASEURL
+    : "https://pgbe.epay.co.id",
   headers: header,
   timeout: 60000,
 });
