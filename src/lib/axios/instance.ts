@@ -10,6 +10,7 @@ declare module "next-auth" {
     accessToken?: string;
   }
 }
+
 const header = {
   Accept: "application/json",
   "Content-Type": "application/json",
@@ -22,11 +23,10 @@ const instance = axios.create({
   headers: header,
   timeout: 60000,
 });
-
+console.log(process.env.NEXT_PUBLIC_BACKEND_API_BASEURL);
 instance.interceptors.response.use(
   async (config) => {
     const session = await getSession();
-
     if (session) {
       const token = session?.accessToken;
       if (token) {
