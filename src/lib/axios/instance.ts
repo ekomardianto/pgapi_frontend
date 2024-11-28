@@ -1,8 +1,5 @@
 import axios from "axios";
-import { error } from "console";
 import { getSession, signOut } from "next-auth/react";
-import { config } from "process";
-import { Session } from "next-auth";
 import { decode } from "jsonwebtoken";
 
 declare module "next-auth" {
@@ -19,11 +16,12 @@ const header = {
 };
 
 const instance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BACKEND_API_BASEURL,
+  baseURL:
+    process.env.NEXT_PUBLIC_BACKEND_API_BASEURL || "https://pgbe.epay.co.id",
   headers: header,
   timeout: 60000,
 });
-console.log(process.env.NEXT_PUBLIC_BACKEND_API_BASEURL);
+
 instance.interceptors.response.use(
   async (config) => {
     const session = await getSession();
