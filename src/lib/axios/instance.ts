@@ -16,7 +16,7 @@ const header = {
 };
 
 const instance = axios.create({
-  baseURL: "https://pgbe.epay.co.id",
+  baseURL: "http://localhost:1213",
   headers: header,
   timeout: 60000,
 });
