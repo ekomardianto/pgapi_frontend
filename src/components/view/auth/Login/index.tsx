@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 import GoogleIcon from "@mui/icons-material/Google";
-import Input from "@/components/ui/input";
 import Button from "@/components/ui/button";
 import AuthLayout from "@/components/layout/AuthLayout";
 import { InputAdornment, TextField, Typography } from "@mui/material";
