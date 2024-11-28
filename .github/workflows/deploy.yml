@@ -45,6 +45,13 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/pgapi_frontend:latest
+          build-args: |
+            NEXT_PUBLIC_BACKEND_API_BASEURL=${{ secrets.NEXT_PUBLIC_BACKEND_API_BASEURL }}
+            NEXT_PUBLIC_URL_PARAM_ENCRYPT_KEY=${{ secrets.NEXT_PUBLIC_URL_PARAM_ENCRYPT_KEY }}
+            NEXT_PUBLIC_URL_ENCRYPT_KEY=${{ secrets.NEXT_PUBLIC_URL_ENCRYPT_KEY }}
+            BACKEND_API_BASEURL=${{ secrets.BACKEND_API_BASEURL }}
+            FRONTEND_URL=${{ vars.FRONTEND_URL }}
+            NEXTAUTH_URL=${{ vars.NEXTAUTH_URL }}
 
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v0.1.4
@@ -70,3 +77,6 @@ jobs:
               -e FRONTEND_URL=${{ vars.FRONTEND_URL }} \
               -e NEXTAUTH_URL=${{ vars.NEXTAUTH_URL }} \
               ${{ vars.IMAGE_NAME }}:latest
+            echo "Container started successfully!"
+            echo "Debugging container environment variables..."
+            docker exec ${{ vars.CONTAINER_NAME }} env
