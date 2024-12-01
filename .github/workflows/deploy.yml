@@ -85,4 +85,4 @@ jobs:
               ${{ vars.IMAGE_NAME }}:latest
             echo "Container started successfully!"
             echo "Debugging container environment variables..."
-            sudo docker exec ${{ vars.CONTAINER_NAME }} env
+            docker exec ${{ vars.CONTAINER_NAME }} env
