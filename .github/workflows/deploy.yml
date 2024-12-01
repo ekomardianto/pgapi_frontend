@@ -24,6 +24,8 @@ jobs:
           NEXT_PUBLIC_BACKEND_API_BASEURL: ${{ secrets.NEXT_PUBLIC_BACKEND_API_BASEURL }}
           NEXT_PUBLIC_URL_PARAM_ENCRYPT_KEY: ${{ secrets.NEXT_PUBLIC_URL_PARAM_ENCRYPT_KEY }}
           NEXT_PUBLIC_URL_ENCRYPT_KEY: ${{ secrets.DB_NAME }}
+          NEXT_PUBLIC_GRECAPTCHA_SITE_KEY: ${{ secrets.NEXT_PUBLIC_GRECAPTCHA_SITE_KEY }}
+          GRECAPTCHA_SECRET_KEY: ${{ secrets.GRECAPTCHA_SECRET_KEY }}
           FRONTEND_URL: ${{ vars.FRONTEND_URL }}
           NEXTAUTH_URL: ${{ vars.NEXTAUTH_URL }}
         run: |
@@ -50,6 +52,8 @@ jobs:
             NEXT_PUBLIC_URL_PARAM_ENCRYPT_KEY=${{ secrets.NEXT_PUBLIC_URL_PARAM_ENCRYPT_KEY }}
             NEXT_PUBLIC_URL_ENCRYPT_KEY=${{ secrets.NEXT_PUBLIC_URL_ENCRYPT_KEY }}
             BACKEND_API_BASEURL=${{ secrets.BACKEND_API_BASEURL }}
+            NEXT_PUBLIC_GRECAPTCHA_SITE_KEY=${{ secrets.NEXT_PUBLIC_GRECAPTCHA_SITE_KEY }}
+            GRECAPTCHA_SECRET_KEY=${{ secrets.GRECAPTCHA_SECRET_KEY }}
             FRONTEND_URL=${{ vars.FRONTEND_URL }}
             NEXTAUTH_URL=${{ vars.NEXTAUTH_URL }}
 
@@ -74,9 +78,11 @@ jobs:
               -e NEXT_PUBLIC_BACKEND_API_BASEURL=${{ secrets.NEXT_PUBLIC_BACKEND_API_BASEURL }} \
               -e NEXT_PUBLIC_URL_PARAM_ENCRYPT_KEY=${{ secrets.NEXT_PUBLIC_URL_PARAM_ENCRYPT_KEY }} \
               -e NEXT_PUBLIC_URL_ENCRYPT_KEY=${{ secrets.NEXT_PUBLIC_URL_ENCRYPT_KEY }} \
+              -e NEXT_PUBLIC_GRECAPTCHA_SITE_KEY=${{ secrets.NEXT_PUBLIC_GRECAPTCHA_SITE_KEY }} \
+              -e GRECAPTCHA_SECRET_KEY=${{ secrets.GRECAPTCHA_SECRET_KEY }} \
               -e FRONTEND_URL=${{ vars.FRONTEND_URL }} \
               -e NEXTAUTH_URL=${{ vars.NEXTAUTH_URL }} \
               ${{ vars.IMAGE_NAME }}:latest
             echo "Container started successfully!"
             echo "Debugging container environment variables..."
-            docker exec ${{ vars.CONTAINER_NAME }} env
+            sudo docker exec ${{ vars.CONTAINER_NAME }} env

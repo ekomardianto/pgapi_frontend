@@ -1,6 +1,7 @@
 import Navbar from "@/components/fragments/navbar";
 import Toaster from "@/components/ui/toaster";
 import "../styles/globals.css";
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { SessionProvider } from "next-auth/react";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
@@ -62,25 +63,29 @@ export default function App({
     };
   }, [toaster, router]);
   return (
-    <SessionProvider session={session}>
-      <CsrfProvider>
-        <div>
-          {loadingPage && <LoadingPage />}
-          {!disabledNavbar.includes(pathname.split("/")[1]) && <Navbar />}
-          <Component
-            {...pageProps}
-            setToaster={setToaster}
-            setLoadingPage={setLoadingPage}
-          />
-          {Object.keys(toaster).length > 0 && (
-            <Toaster
-              variant={toaster.variant}
-              message={toaster.message}
+    <GoogleReCaptchaProvider
+      reCaptchaKey={process.env.NEXT_PUBLIC_GRECAPTCHA_SITE_KEY || ""}
+    >
+      <SessionProvider session={session}>
+        <CsrfProvider>
+          <div>
+            {loadingPage && <LoadingPage />}
+            {!disabledNavbar.includes(pathname.split("/")[1]) && <Navbar />}
+            <Component
+              {...pageProps}
               setToaster={setToaster}
+              setLoadingPage={setLoadingPage}
             />
-          )}
-        </div>
-      </CsrfProvider>
-    </SessionProvider>
+            {Object.keys(toaster).length > 0 && (
+              <Toaster
+                variant={toaster.variant}
+                message={toaster.message}
+                setToaster={setToaster}
+              />
+            )}
+          </div>
+        </CsrfProvider>
+      </SessionProvider>
+    </GoogleReCaptchaProvider>
   );
 }

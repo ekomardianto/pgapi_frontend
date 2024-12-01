@@ -7,45 +7,63 @@ import GoogleIcon from "@mui/icons-material/Google";
 import Button from "@/components/ui/button";
 import AuthLayout from "@/components/layout/AuthLayout";
 import { InputAdornment, TextField, Typography } from "@mui/material";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 const LoginView = ({ setToaster }: any) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const { push, query } = useRouter();
   //handle button submit
-
-  const callbackUrl: any = query.callbackUrl || "/";
+  const { executeRecaptcha } = useGoogleReCaptcha(); // Hook Google reCAPTCHA
+  const callbackUrl: any =
+    process.env.NEXT_PUBLIC_BASE_URL || query?.callbackUrl || "/";
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsLoading(true);
-    setError("");
+
     const form = event.target as HTMLFormElement;
+
     try {
+      // Pastikan reCAPTCHA dijalankan
+      const recaptchaToken = await executeRecaptcha?.("login_action");
+      if (!recaptchaToken) {
+        setToaster({
+          variant: "danger",
+          message: "Gagal memvalidasi reCAPTCHA!",
+        });
+        setIsLoading(false);
+        return;
+      }
+
+      // Lanjutkan login dengan token reCAPTCHA
       const res = await signIn("credentials", {
         redirect: false,
         username: form.username.value,
         password: form.password.value,
+        recaptchaToken, // Sertakan token reCAPTCHA
         callbackUrl,
       });
-      // console.log(res)
+
       if (!res?.error && res?.ok && res?.status === 200) {
-        setIsLoading(false);
-        form.reset();
-        push(callbackUrl);
         setToaster({
           variant: "success",
           message: "Login sukses!",
         });
+        form.reset();
+        push(callbackUrl);
       } else {
-        setIsLoading(false);
         setToaster({
           variant: "danger",
           message: "Username / Password salah!",
         });
       }
     } catch (error) {
+      setToaster({
+        variant: "danger",
+        message: "Terjadi kesalahan saat login!",
+      });
+    } finally {
       setIsLoading(false);
-      setError("Something went wrong");
     }
   };
 
