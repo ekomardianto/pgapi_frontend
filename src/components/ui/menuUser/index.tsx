@@ -17,7 +17,9 @@ export default function UserMenu() {
   const handleSignout = async () => {
     setIsLoading(true);
     setTimeout(async () => {
-      const result = await signOut();
+      const result = await signOut({
+        callbackUrl: process.env.NEXTAUTH_URL,
+      });
 
       // console.log(result)
       setIsLoading(false);

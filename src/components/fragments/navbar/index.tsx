@@ -14,11 +14,12 @@ const Navbar = () => {
   // ambil role userSession
   const role = data?.user?.role;
   const name = data?.user?.name;
-
   const handleClick = async () => {
     setIsLoading(true);
     if (data) {
-      await signOut();
+      await signOut({
+        callbackUrl: process.env.NEXTAUTH_URL,
+      });
       setIsLoading(false);
     } else {
       await signIn();

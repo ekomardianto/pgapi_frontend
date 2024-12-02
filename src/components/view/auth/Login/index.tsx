@@ -15,8 +15,7 @@ const LoginView = ({ setToaster }: any) => {
   const { push, query } = useRouter();
   //handle button submit
   const { executeRecaptcha } = useGoogleReCaptcha(); // Hook Google reCAPTCHA
-  const callbackUrl: any =
-    process.env.NEXT_PUBLIC_BASE_URL || query?.callbackUrl || "/";
+  const callbackUrl: any = query?.callbackUrl || process.env.NEXTAUTH_URL;
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsLoading(true);
