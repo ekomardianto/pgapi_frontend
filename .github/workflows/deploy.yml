@@ -28,6 +28,7 @@ jobs:
           GRECAPTCHA_SECRET_KEY: ${{ secrets.GRECAPTCHA_SECRET_KEY }}
           FRONTEND_URL: ${{ vars.FRONTEND_URL }}
           NEXTAUTH_URL: ${{ vars.NEXTAUTH_URL }}
+          NEXT_PUBLIC_NEXTAUTH_URL: ${{ vars.NEXT_PUBLIC_NEXTAUTH_URL }}
         run: |
           echo "Environment variables set!"
 
@@ -56,6 +57,7 @@ jobs:
             GRECAPTCHA_SECRET_KEY=${{ secrets.GRECAPTCHA_SECRET_KEY }}
             FRONTEND_URL=${{ vars.FRONTEND_URL }}
             NEXTAUTH_URL=${{ vars.NEXTAUTH_URL }}
+            NEXT_PUBLIC_NEXTAUTH_URL=${{ vars.NEXT_PUBLIC_NEXTAUTH_URL }}
 
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v0.1.4
@@ -82,6 +84,7 @@ jobs:
               -e GRECAPTCHA_SECRET_KEY=${{ secrets.GRECAPTCHA_SECRET_KEY }} \
               -e FRONTEND_URL=${{ vars.FRONTEND_URL }} \
               -e NEXTAUTH_URL=${{ vars.NEXTAUTH_URL }} \
+              -e NEXT_PUBLIC_NEXTAUTH_URL=${{ vars.NEXT_PUBLIC_NEXTAUTH_URL }} \
               ${{ vars.IMAGE_NAME }}:latest
             echo "Container started successfully!"
             echo "Debugging container environment variables..."

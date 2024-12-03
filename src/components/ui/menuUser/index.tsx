@@ -18,12 +18,12 @@ export default function UserMenu() {
     setIsLoading(true);
     // Log nilai callbackUrl sebelum logout
     const callbackUrl =
-      process.env.NEXT_PUBLIC_BASE_URL +
+      process.env.NEXT_PUBLIC_NEXTAUTH_URL +
       "/" +
       window.location.pathname.slice(1);
     console.log("Callback URL:", callbackUrl);
     setTimeout(async () => {
-      const result = await signOut();
+      const result = await signOut({ callbackUrl: callbackUrl });
 
       setIsLoading(false);
     }, 500);
