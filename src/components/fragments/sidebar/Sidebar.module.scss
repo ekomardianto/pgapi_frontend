@@ -1,6 +1,6 @@
 .sidebar {
-  background-color: #000;
-  color: #fff;
+  background-color: #fff;
+  color: #000;
   width: 15vw;
   padding: 20px;
   height: auto;
@@ -49,8 +49,8 @@
           transform: 0.3s;
         }
         &__active {
-          background-color: #fff;
-          color: #000;
+          background-color: #6e96ec;
+          color: #fff;
           transform: 0.3s;
         }
         &__title {
@@ -75,13 +75,13 @@
           font-size: 18pt;
         }
         &:hover {
-          background-color: #fff;
-          color: #000;
+          background-color: #6e96ec;
+          color: #fff;
           transform: 0.3s;
         }
         &__active {
-          background-color: #fff;
-          color: #000;
+          background-color: #6e96ec;
+          color: #fff;
           transform: 0.3s;
         }
       }
@@ -100,13 +100,13 @@
           font-size: 18pt;
         }
         &:hover {
-          background-color: #fff;
-          color: #000;
+          background-color: #6e96ec;
+          color: #fff;
           transform: 0.3s;
         }
         &__active {
-          background-color: #fff;
-          color: #000;
+          background-color: #6e96ec;
+          color: #fff;
           transform: 0.3s;
         }
       }
@@ -141,7 +141,7 @@
 @media only screen and (max-width: 801px) {
   /* For mobile phones: */
   .sidebar {
-    width: 15vw;
+    width: 20vw;
     &__top {
       &__logo {
         font-size: 10pt;
