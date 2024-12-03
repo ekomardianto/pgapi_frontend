@@ -21,9 +21,9 @@ export default function UserMenu() {
       process.env.NEXT_PUBLIC_NEXTAUTH_URL +
       "/" +
       window.location.pathname.slice(1);
-    console.log("Callback URL:", callbackUrl);
+
     setTimeout(async () => {
-      const result = await signOut({ callbackUrl: callbackUrl });
+      const result = await signOut({ callbackUrl });
 
       setIsLoading(false);
     }, 500);
