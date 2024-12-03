@@ -165,9 +165,9 @@ const authOptions: NextAuthOptions = {
       return session;
     },
   },
-
   pages: {
     signIn: "/auth/login",
   },
+  debug: true,
 };
 export default NextAuth(authOptions);
