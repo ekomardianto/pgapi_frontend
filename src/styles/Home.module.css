@@ -1,9 +1,4 @@
 .main {
   font-family: "Poppins", sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 6rem;
-  min-height: 100vh;
-  background-color: black;
+  background-color: rgb(255, 255, 255);
 }

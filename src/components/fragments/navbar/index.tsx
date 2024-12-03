@@ -7,6 +7,8 @@ import Link from "next/link";
 import Tooltips from "@/components/ui/tooltips";
 import { SettingsInputCompositeTwoTone } from "@mui/icons-material";
 import { useState } from "react";
+import Image from "next/image";
+import { Button } from "@mui/material";
 
 const Navbar = () => {
   const { data }: any = useSession();
@@ -30,8 +32,14 @@ const Navbar = () => {
     <div className={styles.navbar}>
       <div className={styles.navbar__kiri}>
         <Link className={styles.navbar__kiri__logo} href="/">
-          <span className={styles.navbar__kiri__logo__kiri}>Kujual</span>
-          <span className={styles.navbar__kiri__logo__kanan}>id</span>
+          <Image
+            src="/assets/logo/logo.svg"
+            width={80}
+            height={80}
+            priority={false}
+            loading="lazy"
+            alt="logo"
+          />
         </Link>
       </div>
       <div className={styles.navbar__tengah}></div>
@@ -74,7 +82,7 @@ const Navbar = () => {
             ""
           )}
         </div>
-        <button
+        <Button
           className={styles.navbar__kanan__button}
           onClick={handleClick}
           disabled={isLoading}
@@ -87,12 +95,21 @@ const Navbar = () => {
               <div className="loader" />
             </div>
           ) : data ? (
-            <LogoutIcon className={styles.navbar__kanan__button__iconnav} />
+            <div className={styles.navbar__kanan__button__iconnavcont}>
+              <LogoutIcon
+                className={styles.navbar__kanan__button__iconnavcont__iconnav}
+              />{" "}
+              <p>Logout</p>
+            </div>
           ) : (
-            <LockOpenIcon className={styles.navbar__kanan__button__iconnav} />
+            <div className={styles.navbar__kanan__button__iconnavcont}>
+              <LockOpenIcon
+                className={styles.navbar__kanan__button__iconnavcont__iconnav}
+              />{" "}
+              <p>Login</p>
+            </div>
           )}
-          {data ? "Logout" : "Login"}
-        </button>
+        </Button>
       </div>
     </div>
   );

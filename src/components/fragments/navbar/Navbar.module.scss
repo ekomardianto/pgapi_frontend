@@ -4,12 +4,13 @@
   justify-content: space-between;
   width: 100%;
   height: 70px;
-  background-color: #000;
-  color: #fff;
-  padding: 10px;
+  background-color: #ffffff;
+  color: #000;
+  padding: 10px 9% 10px 9%;
   position: fixed;
-  border-bottom: 1px solid #2b2b2b;
-  box-shadow: #2b2b2b 0px 0px 20px;
+  z-index: 9999;
+  border-bottom: 1px solid #f2f2f2;
+  box-shadow: #f2f2f2 0px 0px 15px;
   &__kiri {
     margin-left: 40px;
     max-width: 20vw;
@@ -26,7 +27,7 @@
         color: #c90ba0;
       }
       &__kanan {
-        color: #fff;
+        color: #000;
       }
     }
   }
@@ -36,22 +37,23 @@
   &__kanan {
     width: 40vw;
     display: flex;
+    align-items: center;
     flex-direction: row;
     justify-content: right;
+    padding-right: 22px;
+    gap: 10px;
     &__button {
-      align-items: center;
-      background-color: #fff;
-      color: #000000;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 9pt;
+      margin-right: 10px;
+      background-color: #2a629a;
+      color: #fff;
       display: flex;
-      padding: 5px;
-      gap: 2px;
-      &__iconnav {
-        font-size: 9pt;
-        font-weight: bold;
+      &__iconnavcont {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        &__iconnav {
+          font-size: 16px;
+        }
       }
     }
     &__button:hover {
@@ -64,7 +66,7 @@
       justify-content: center;
       &__nama {
         font-size: 14pt;
-        color: #ffffff;
+        color: #000;
       }
       &__panelbutton {
         margin-right: 10px;

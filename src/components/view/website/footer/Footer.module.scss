@@ -1,92 +1,96 @@
-.footer{
-    color: #e1e1e1;
-    margin-top: 50px;
+.footer {
+  width: 100vw;
+  background-color: #003285;
+  color: #fff;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  bottom: 0;
+  padding: 5% 10%;
+  h5 {
+    font-size: 12pt;
+    font-weight: 500;
+    color: #f0efef;
+  }
+  &__atas {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    h5{
-        font-size: 16pt;
-        font-weight: 300;
+    flex-direction: row;
+    gap: 20px;
+    i {
+      font-size: 28pt;
     }
-    &__atas{
-        width: 100%;
+    &__kiri {
+      width: 25vw;
+      &__title {
+        margin-bottom: 20px;
+      }
+      &__main {
         display: flex;
-        flex-direction: row;
-        gap: 20px;
-        i{
-            font-size: 28pt;
-        }
-        &__kiri{
-            width: 25vw;
-            &__title{
-                margin-bottom: 20px
-            }
-            &__main{
-                display: flex;
-                align-items: center;
-                justify-content: left;
-            }
-        }
-        &__tengah{
-            width: 40vw;
-            &__title{
-                margin-bottom: 20px;
-                text-align: center;
-            }
-            &__main{
-                display: flex;
-                align-items: center;
-                justify-content: left;
-            }
-        }
-        &__kanan{
-            width: 25vw;
-            text-align: right;
-            &__title{
-                margin-bottom: 20px;
-                
-            }
-            &__main{
-                display: flex;
-                align-items: center;
-                justify-content: right;
-                gap: 10px;
-            }
-        }
+        align-items: center;
+        justify-content: left;
+      }
     }
-    &__bawah{
-        font-size: 11pt;
-        width: 100%;
+    &__tengah {
+      width: 40vw;
+      &__title {
+        margin-bottom: 20px;
         text-align: center;
-        margin-top: 50px;
+      }
+      &__main {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+      }
     }
-    
-}
-@media only screen and (max-width: 768px) {
-    /* For mobile phones: */
-    .footer{
-        &__atas{
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            &__kiri{
-                width: 100%;
-                text-align: center;
-                
-                &__main{
-                    align-items: center;
-                    justify-content: center;
-                }
-            }
-            &__tengah{
-                width: 100%;
-            }
-            &__kanan{
-                width: 100%;
-                
-                text-align: center;
-                justify-content: center;
-                align-items: center;
-            }
-        }
+    &__kanan {
+      width: 25vw;
+      text-align: right;
+      &__title {
+        margin-bottom: 20px;
+      }
+      &__main {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        gap: 10px;
+      }
     }
   }
+  &__bawah {
+    font-size: 11pt;
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+    color: #003285;
+  }
+}
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .footer {
+    &__atas {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      &__kiri {
+        width: 100%;
+        text-align: center;
+
+        &__main {
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      &__tengah {
+        width: 100%;
+      }
+      &__kanan {
+        width: 100%;
+
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
