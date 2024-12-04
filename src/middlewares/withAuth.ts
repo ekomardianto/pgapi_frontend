@@ -8,6 +8,7 @@ import {
   NextRequest,
   NextResponse,
 } from "next/server";
+import { hostname } from "os";
 
 const onlySa = ["sa"];
 const onlyAdmin = ["admin"];
@@ -28,10 +29,12 @@ export default function WithAuth(
       req,
       secret: process.env.NEXTAUTH_SECRET,
     });
+    // console.log("host name", req.nextUrl);
     if (requireAuth.includes(pathname)) {
       if (!token && !authPage.includes(pathname)) {
         const url = new URL("/auth/login", process.env.NEXTAUTH_URL || req.url);
-        url.searchParams.set("callbackUrl", encodeURI(req.url));
+        const callbacuri = process.env.NEXTAUTH_URL + req.nextUrl.pathname;
+        url.searchParams.set("callbackUrl", encodeURI(callbacuri));
         NextResponse.next().headers.set(
           "Cache-Control",
           "no-store, no-cache, must-revalidate, proxy-revalidate"

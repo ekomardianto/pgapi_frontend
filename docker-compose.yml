@@ -8,3 +8,5 @@ services:
     restart: always
     environment:
       - NODE_ENV=production
+      - NEXTAUTH_URL=https://apipg.epay.co.id
+      - NEXT_PUBLIC_NEXTAUTH_URL=https://apipg.epay.co.id
