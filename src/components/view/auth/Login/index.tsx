@@ -1,4 +1,4 @@
-import { FormEvent, useEffect } from "react";
+import { FormEvent } from "react";
 import styles from "./Login.module.scss";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
@@ -12,16 +12,14 @@ import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 const LoginView = ({ setToaster }: any) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const { push, query } = useRouter();
+  const { push } = useRouter();
   //handle button submit
   const { executeRecaptcha } = useGoogleReCaptcha(); // Hook Google reCAPTCHA
-  const callbackUrl: any = query?.callbackUrl || "/";
+  const callbackUrl: any = "/authenticated";
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsLoading(true);
-
     const form = event.target as HTMLFormElement;
-
     try {
       // Pastikan reCAPTCHA dijalankan
       const recaptchaToken = await executeRecaptcha?.("login_action");
@@ -49,6 +47,7 @@ const LoginView = ({ setToaster }: any) => {
           message: "Login sukses!",
         });
         form.reset();
+
         push(callbackUrl);
       } else {
         setToaster({

@@ -29,7 +29,7 @@ export default function WithAuth(
       req,
       secret: process.env.NEXTAUTH_SECRET,
     });
-    // console.log("host name", req.nextUrl);
+
     if (requireAuth.includes(pathname)) {
       if (!token && !authPage.includes(pathname)) {
         const url = new URL("/auth/login", process.env.NEXTAUTH_URL || req.url);
@@ -43,7 +43,10 @@ export default function WithAuth(
       }
       if (token) {
         if (authPage.includes(pathname)) {
-          return NextResponse.redirect(new URL("/", req.url));
+          return NextResponse.redirect(new URL("/" + token.role, req.url));
+        }
+        if (pathname === "authenticated") {
+          return NextResponse.redirect(new URL("/" + token.role, req.url));
         }
         // Pada Bagian ini bisa melakukan filter terhadap role user ***
         if (token.role !== "admin" && onlyAdmin.includes(pathname)) {

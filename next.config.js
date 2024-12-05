@@ -15,10 +15,6 @@ const nextConfig = {
       },
     ],
   },
-  
-  env: {
-    NEXT_PUBLIC_BACKEND_API_BASEURL: process.env.NEXT_PUBLIC_BACKEND_API_BASEURL,
-  },
 };
 
 module.exports = nextConfig;

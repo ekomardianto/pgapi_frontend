@@ -9,7 +9,17 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        xlm: { min: '1025px', max: '1200px' }, // Breakpoint custom untuk 1025px
+      },
+      colors: {
+        'primary': '#003285',
+        'secondary': '#2A629A',
+        'tird':'#FF7F3E',
+        'forth':'#FFDA78',
+      }
+    },
   },
   plugins: [],
 }

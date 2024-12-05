@@ -34,8 +34,8 @@ const Navbar = () => {
         <Link className={styles.navbar__kiri__logo} href="/">
           <Image
             src="/assets/logo/logo.svg"
-            width={80}
-            height={80}
+            width={100}
+            height={90}
             priority={false}
             loading="lazy"
             alt="logo"
@@ -99,7 +99,7 @@ const Navbar = () => {
               <LogoutIcon
                 className={styles.navbar__kanan__button__iconnavcont__iconnav}
               />{" "}
-              <p>Logout</p>
+              <p className="hidden lg:block">Logout</p>
             </div>
           ) : (
             <div className={styles.navbar__kanan__button__iconnavcont}>

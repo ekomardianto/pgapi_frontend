@@ -55,7 +55,7 @@ const authOptions: NextAuthOptions = {
           );
           // deklarasikan Response Data
           const resData = await req.json();
-          // console.log(resData)
+
           if (resData) {
             if (resData.status_code === 200) {
               return resData.data;
@@ -66,7 +66,6 @@ const authOptions: NextAuthOptions = {
             return null;
           }
         } catch (error) {
-          // console.log(error)
           return null;
         }
       },
@@ -76,6 +75,7 @@ const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET || "",
     }),
   ],
+
   callbacks: {
     async jwt({ token, account, profile, user }: any) {
       if (account?.provider === "credentials") {
@@ -126,6 +126,7 @@ const authOptions: NextAuthOptions = {
       }
       return token;
     },
+
     async session({ session, token }: any) {
       if ("email" in token) {
         session.user.email = token.email;
@@ -160,13 +161,14 @@ const authOptions: NextAuthOptions = {
       if ("nama_perusahaan" in token) {
         session.user.nama_perusahaan = token.nama_perusahaan;
       }
-      // console.log(session.user)
       session.accessToken = token.accessToken;
       return session;
     },
   },
+
   pages: {
     signIn: "/auth/login",
   },
 };
+
 export default NextAuth(authOptions);
